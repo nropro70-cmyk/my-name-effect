@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Name Animation</title>
+    <title>Trang Giới Thiệu - Pixel Style chuẩn Tiếng Việt</title>
+    <!-- Nhúng font chữ Pixel đã được Việt hóa đầy đủ dấu -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,8 +18,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #0b0f19;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
             overflow: hidden;
         }
 
@@ -25,24 +26,51 @@
             text-align: center;
         }
 
-        .my-name {
-            font-size: 5rem;
-            font-weight: 800;
+        /* Dòng chữ TRANG GIỚI THIỆU phía trên */
+        .subtitle {
+            font-family: 'VT323', monospace;
+            font-size: 2.2rem; /* Tăng size một chút vì font VT323 mảnh hơn */
+            color: #8e8e8e;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 5px;
-            background: linear-gradient(45deg, #ff007f, #7f00ff, #00f0ff, #ff007f);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-move 6s ease infinite;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
             user-select: none;
         }
 
-        .my-name:hover {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.6));
+        /* Khung chứa tên tự động bồng bềnh */
+        .name-wrapper {
+            display: inline-block;
+            animation: float-slow 4s ease-in-out infinite;
+        }
+
+        /* Định dạng ký tự Pixel Việt hóa và hiệu ứng đổi màu */
+        .char {
+            display: inline-block;
+            font-family: 'VT323', monospace;
+            font-size: 6.5rem; /* Font này dáng cao nên để size này nhìn sẽ rất rõ và đều */
+            font-weight: bold;
+            text-transform: uppercase;
+            
+            background: linear-gradient(45deg, #ff5722, #ff0055, #7f00ff, #00f0ff, #ff5722);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-move 8s ease infinite;
+
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Hiệu ứng nhảy chữ khi rê chuột vào */
+        .char:hover {
+            transform: translateY(-20px);
+        }
+
+        /* Khoảng cách giữa các từ */
+        .space {
+            display: inline-block;
+            width: 35px;
         }
 
         @keyframes gradient-move {
@@ -50,12 +78,33 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1 class="my-name">Phạm Văn Long</h1>
+        <div class="subtitle">Trang Giới Thiệu</div>
+        
+        <div class="name-wrapper">
+            <span class="char">P</span>
+            <span class="char">h</span>
+            <span class="char">ạ</span>
+            <span class="char">m</span>
+            <div class="space"></div>
+            <span class="char">V</span>
+            <span class="char">ă</span>
+            <span class="char">n</span>
+            <div class="space"></div>
+            <span class="char">L</span>
+            <span class="char">o</span>
+            <span class="char">n</span>
+            <span class="char">g</span>
+        </div>
     </div>
 
 </body>
