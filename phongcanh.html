@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Nightscape with Trees - Local Fixed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #191919; /* Khớp màu nền Notion tối */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Khung tranh phong cảnh ban đêm */
+        .nightscape {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to bottom, #111424 0%, #191919 100%);
+        }
+
+        /* Mặt trăng Pixel Art */
+        .pixel-moon {
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 15px 15px 0 0 #ffe89e;
+            filter: drop-shadow(0 0 10px rgba(255, 232, 158, 0.6));
+        }
+
+        /* Các ngôi sao Pixel nhấp nháy */
+        .star {
+            position: absolute;
+            background-color: #ffffff;
+            width: 4px;
+            height: 4px;
+            box-shadow: 0 0 4px #fff;
+        }
+
+        .star1 { top: 20%; left: 10%; animation: twinkle 2s infinite 0.5s; }
+        .star2 { top: 35%; left: 25%; animation: twinkle 1.5s infinite 1s; }
+        .star3 { top: 15%; left: 45%; animation: twinkle 2.5s infinite 0.2s; }
+        .star4 { top: 25%; left: 70%; animation: twinkle 1.8s infinite 0.7s; }
+        .star5 { top: 40%; left: 85%; animation: twinkle 2.2s infinite 1.2s; }
+        .star6 { top: 45%; left: 50%; animation: twinkle 1.9s infinite 0.4s; }
+        .star7 { top: 10%; left: 80%; animation: twinkle 2.3s infinite 0.8s; }
+
+        /* Dãy núi răng cưa phía xa */
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35vh;
+            background-color: #252538;
+            clip-path: polygon(0% 100%, 0% 60%, 8% 52%, 15% 65%, 25% 45%, 38% 70%, 50% 40%, 62% 65%, 72% 48%, 85% 58%, 92% 42%, 100% 60%, 100% 100%);
+            opacity: 0.35;
+            z-index: 1;
+        }
+
+        /* PHƯƠNG PHÁP MỚI: Hàng cây cây thông Pixel thủ công lặp lại liên tục */
+        .pixel-trees-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: 2;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        /* Tạo hình 1 cây thông Pixel đơn lẻ bằng CSS đổ bóng */
+        .tree {
+            width: 16px;
+            height: 16px;
+            background: #171724;
+            position: relative;
+            transform-origin: bottom center;
+            animation: tree-sway 6s ease-in-out infinite;
+            /* Đổ bóng chồng lên nhau tạo thành các tầng lá cây thông nhọn hoắt */
+            box-shadow: 
+                0 -8px 0 0 #171724,
+                -4px -4px 0 0 #171724, 4px -4px 0 0 #171724,
+                -4px 0 0 0 #171724, 4px 0 0 0 #171724,
+                -8px 4px 0 0 #171724, 8px 4px 0 0 #171724,
+                -4px 4px 0 0 #171724, 4px 4px 0 0 #171724, 0 4px 0 0 #171724,
+                -12px 8px 0 0 #171724, 12px 8px 0 0 #171724,
+                -8px 8px 0 0 #171724, 8px 8px 0 0 #171724,
+                -4px 8px 0 0 #171724, 4px 8px 0 0 #171724, 0 8px 0 0 #171724,
+                -16px 12px 0 0 #171724, 16px 12px 0 0 #171724,
+                -12px 12px 0 0 #171724, 12px 12px 0 0 #171724,
+                -8px 12px 0 0 #171724, 8px 12px 0 0 #171724,
+                -4px 12px 0 0 #171724, 4px 12px 0 0 #171724, 0 12px 0 0 #171724;
+        }
+
+        /* Đa dạng hóa kích thước các cây ngẫu nhiên để trông tự nhiên hơn */
+        .tree:nth-child(2n) { transform: scale(1.3); animation-delay: 1s; }
+        .tree:nth-child(3n) { transform: scale(0.9); animation-delay: 1.5s; }
+        .tree:nth-child(4n) { transform: scale(1.1); animation-delay: 0.5s; }
+
+        /* Hiệu ứng nhấp nháy của sao */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Hiệu ứng rặng cây đung đưa nhẹ nhàng theo gió đêm */
+        @keyframes tree-sway {
+            0%, 100% { transform: skewX(0deg); }
+            50% { transform: skewX(2deg); } /* Đung đưa nhẹ sang phải */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nightscape">
+        <!-- Mặt trăng và sao -->
+        <div class="pixel-moon"></div>
+        <div class="star star1"></div>
+        <div class="star star2"></div>
+        <div class="star star3"></div>
+        <div class="star star4"></div>
+        <div class="star star5"></div>
+        <div class="star star6"></div>
+        <div class="star star7"></div>
+        
+        <!-- Các lớp cảnh vật xếp tầng -->
+        <div class="mountains"></div>
+        
+        <!-- Khung chứa hàng cây thông Pixel -->
+        <div class="pixel-trees-container">
+            <div class="tree"></div><div class="tree"></div><div class="tree"></div>
+            <div class="tree"></div><div class="tree"></div><div class="tree"></div>
+            <div class="tree"></div><div class="tree"></div><div class="tree"></div>
+            <div class="tree"></div><div class="tree"></div><div class="tree"></div>
+            <div class="tree"></div><div class="tree"></div><div class="tree"></div>
+            <div class="tree"></div><div class="tree"></div><div class="tree"></div>
+            <div class="tree"></div><div class="tree"></div>
+        </div>
+    </div>
+
+</body>
+</html>
