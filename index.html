@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Giới Thiệu - Pixel Style chuẩn Tiếng Việt</title>
+    <title>Trang Giới Thiệu - Pixel Style Nền Đen</title>
     <!-- Nhúng font chữ Pixel đã được Việt hóa đầy đủ dấu -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
@@ -18,7 +18,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #ffffff;
+            background-color: #000000; /* Đã đổi thành nền đen hoàn toàn */
             overflow: hidden;
         }
 
@@ -29,8 +29,8 @@
         /* Dòng chữ TRANG GIỚI THIỆU phía trên */
         .subtitle {
             font-family: 'VT323', monospace;
-            font-size: 2.2rem; /* Tăng size một chút vì font VT323 mảnh hơn */
-            color: #8e8e8e;
+            font-size: 2.2rem;
+            color: #b0b0b0; /* Đổi sang màu xám sáng để nổi bật trên nền đen */
             letter-spacing: 6px;
             margin-bottom: 20px;
             text-transform: uppercase;
@@ -47,7 +47,7 @@
         .char {
             display: inline-block;
             font-family: 'VT323', monospace;
-            font-size: 6.5rem; /* Font này dáng cao nên để size này nhìn sẽ rất rõ và đều */
+            font-size: 6.5rem;
             font-weight: bold;
             text-transform: uppercase;
             
@@ -65,6 +65,8 @@
         /* Hiệu ứng nhảy chữ khi rê chuột vào */
         .char:hover {
             transform: translateY(-20px);
+            /* Thêm hiệu ứng đổ bóng phát sáng nhẹ khi di chuột trên nền tối */
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.5));
         }
 
         /* Khoảng cách giữa các từ */
