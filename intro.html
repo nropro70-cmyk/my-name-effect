@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mục Tiêu Portfolio - Interactive Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0e17; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: #e2e8f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Hiệu ứng hạt ánh sáng nền */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            animation: move-bg 20s linear infinite;
+        }
+
+        @keyframes move-bg {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-40px, -40px); }
+        }
+
+        .card {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            padding: 50px;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25rem;
+            color: #60a5fa;
+            margin-bottom: 30px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        /* Container chứa nội dung để xử lý hiệu ứng nảy */
+        .content-box {
+            line-height: 2;
+            perspective: 1000px;
+        }
+
+        /* Định dạng từng từ để có thể nảy lên */
+        .word {
+            display: inline-block;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: #cbd5e1;
+            cursor: default;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-right: 4px; /* Khoảng cách giữa các từ */
+            user-select: none;
+        }
+
+        /* Hiệu ứng NẢY khi di chuột vào từng từ */
+        .word:hover {
+            transform: translateY(-8px) scale(1.1);
+            color: #ffffff;
+            text-shadow: 0 10px 20px rgba(96, 165, 250, 0.4);
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+            margin: 30px auto;
+        }
+
+        /* Trang trí góc */
+        .corner {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 1.5px solid #60a5fa;
+            opacity: 0.4;
+        }
+        .tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="corner tl"></div>
+        <div class="corner br"></div>
+        
+        <span class="title">Mục Tiêu Của Portfolio :</span>
+        
+        <div class="content-box" id="text-container">
+            </div>
+
+        <div class="divider"></div>
+
+        <div class="content-box" id="text-container-2">
+            </div>
+    </div>
+
+    <script>
+        // Nội dung của ông
+        const p1 = "Không gian này ghi lại hành trình làm chủ công nghệ số và AI của tôi. Tại đây, các kỹ năng thành phần được hệ thống hóa một cách trực quan, minh chứng cho sự phát triển trong tư duy lập trình lẫn trách nhiệm đạo đức khi ứng dụng trí tuệ nhân tạo.";
+        const p2 = "Đây đồng thời là kho lưu trữ mở, sẵn sàng kết nối và đồng hành cùng tôi trong các dự án tiếp theo.";
+
+        function wrapWords(text, containerId) {
+            const container = document.getElementById(containerId);
+            const words = text.split(" ");
+            container.innerHTML = words.map(word => `<span class="word">${word}</span>`).join("");
+        }
+
+        // Chạy hàm tách từ
+        wrapWords(p1, "text-container");
+        wrapWords(p2, "text-container-2");
+    </script>
+</body>
+</html>
