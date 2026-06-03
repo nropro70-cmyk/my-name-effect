@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Dự Án - Pixel Bold</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #191919; /* Màu nền Notion */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'VT323', monospace;
+        }
+
+        .container {
+            text-align: center;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Chữ to hơn và khít nhau hơn */
+        .char {
+            display: inline-block;
+            font-size: 8rem; /* Tăng kích thước chữ lên mức cực đại */
+            color: #ffffff;
+            transition: all 0.2s steps(2);
+            cursor: default;
+            /* Thu hẹp chiều rộng khung chữ để chúng gần nhau hơn */
+            width: 0.6em; 
+            text-align: center;
+            text-transform: uppercase;
+            /* Đổ bóng nhẹ chuẩn pixel */
+            text-shadow: 6px 6px 0px rgba(0,0,0,0.5);
+        }
+
+        /* Hiệu ứng nảy chữ khi di chuột */
+        .char:hover {
+            transform: translateY(-15px);
+            color: #60a5fa;
+            text-shadow: 0px 8px 0px #2563eb;
+        }
+
+        /* Loại bỏ cursor nhấp nháy theo yêu cầu */
+
+        @media (max-width: 800px) {
+            .char { 
+                font-size: 4rem; 
+                width: 0.55em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="text-target">
+        </div>
+
+    <script>
+        const text = "TRANG DỰ ÁN";
+        const container = document.getElementById('text-target');
+
+        text.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.className = 'char';
+            container.appendChild(span);
+        });
+    </script>
+</body>
+</html>
