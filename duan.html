@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Dự Án - Pixel Bold</title>
+    <title>Trang Dự Án - Pixel Bold (Light Mode)</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,7 +13,8 @@
         }
 
         body {
-            background-color: #191919; /* Màu nền Notion */
+            /* Đổi sang màu trắng thuần của Notion Light Mode */
+            background-color: #FFFFFF; 
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -34,22 +35,24 @@
         .char {
             display: inline-block;
             font-size: 8rem; /* Tăng kích thước chữ lên mức cực đại */
-            color: #ffffff;
+            /* Đổi từ màu trắng sang màu chữ mặc định của Notion */
+            color: #37352f; 
             transition: all 0.2s steps(2);
             cursor: default;
             /* Thu hẹp chiều rộng khung chữ để chúng gần nhau hơn */
             width: 0.6em; 
             text-align: center;
             text-transform: uppercase;
-            /* Đổ bóng nhẹ chuẩn pixel */
-            text-shadow: 6px 6px 0px rgba(0,0,0,0.5);
+            /* Đổi bóng đổ pixel sang màu xám nhạt để hợp với nền trắng */
+            text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
         }
 
         /* Hiệu ứng nảy chữ khi di chuột */
         .char:hover {
             transform: translateY(-15px);
-            color: #60a5fa;
-            text-shadow: 0px 8px 0px #2563eb;
+            /* Màu xanh dương sáng chuyển sang tông đậm hơn để dễ nhìn trên nền trắng */
+            color: #2563eb;
+            text-shadow: 0px 8px 0px #1d4ed8;
         }
 
         /* Loại bỏ cursor nhấp nháy theo yêu cầu */

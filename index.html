@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Giới Thiệu - Notion Dark Mode Style</title>
-    <!-- Nhúng font chữ Pixel đã được Việt hóa đầy đủ dấu -->
+    <title>Trang Giới Thiệu - Notion Light Mode Style</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         * {
@@ -18,7 +17,8 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #191919; /* Đã đổi sang mã màu xám đen chuẩn Notion Dark Mode */
+            /* Đổi sang màu trắng thuần của Notion Light Mode */
+            background-color: #FFFFFF; 
             overflow: hidden;
         }
 
@@ -26,11 +26,12 @@
             text-align: center;
         }
 
-        /* Dòng chữ TRANG GIỚI THIỆU phía trên */
+        /* Dòng chữ TRANG GIỚI THIỆU - Chỉnh lại màu xám đậm để nổi trên nền trắng */
         .subtitle {
             font-family: 'VT323', monospace;
             font-size: 2.2rem;
-            color: #8e8e8e;
+            color: #37352f; /* Màu chữ mặc định của Notion */
+            opacity: 0.6;
             letter-spacing: 6px;
             margin-bottom: 20px;
             text-transform: uppercase;
@@ -43,7 +44,7 @@
             animation: float-slow 4s ease-in-out infinite;
         }
 
-        /* Định dạng ký tự Pixel Việt hóa và hiệu ứng đổi màu */
+        /* Định dạng ký tự Pixel và hiệu ứng gradient sáng hơn cho nền trắng */
         .char {
             display: inline-block;
             font-family: 'VT323', monospace;
@@ -51,7 +52,8 @@
             font-weight: bold;
             text-transform: uppercase;
             
-            background: linear-gradient(45deg, #ff5722, #ff0055, #7f00ff, #00f0ff, #ff5722);
+            /* Gradient được điều chỉnh tông màu đậm hơn một chút để dễ nhìn trên nền trắng */
+            background: linear-gradient(45deg, #e91e63, #9c27b0, #3f51b5, #00bcd4, #e91e63);
             background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -62,10 +64,11 @@
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Hiệu ứng nhảy chữ khi rê chuột vào */
+        /* Hiệu ứng nhảy chữ và đổ bóng nhẹ */
         .char:hover {
             transform: translateY(-20px);
-            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
+            /* Đổ bóng màu tối nhẹ để tạo độ sâu trên nền trắng */
+            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.1));
         }
 
         /* Khoảng cách giữa các từ */
