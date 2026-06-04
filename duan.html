@@ -13,7 +13,6 @@
         }
 
         body {
-            /* Đổi sang màu trắng thuần của Notion Light Mode */
             background-color: #FFFFFF; 
             height: 100vh;
             display: flex;
@@ -31,31 +30,31 @@
             align-items: center;
         }
 
-        /* Chữ to hơn và khít nhau hơn */
         .char {
             display: inline-block;
-            font-size: 8rem; /* Tăng kích thước chữ lên mức cực đại */
-            /* Đổi từ màu trắng sang màu chữ mặc định của Notion */
-            color: #37352f; 
-            transition: all 0.2s steps(2);
+            font-size: 8rem; 
+            /* Màu đen xám sâu nhìn rất tối giản và cao cấp */
+            color: #2D3142; 
+            /* Tăng độ mượt của animation nhảy pixel */
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.2), color 0.2s ease, text-shadow 0.25s ease;
             cursor: default;
-            /* Thu hẹp chiều rộng khung chữ để chúng gần nhau hơn */
             width: 0.6em; 
             text-align: center;
             text-transform: uppercase;
-            /* Đổi bóng đổ pixel sang màu xám nhạt để hợp với nền trắng */
-            text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+            /* Bóng đổ pixel mờ nhẹ lúc bình thường */
+            text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
         }
 
-        /* Hiệu ứng nảy chữ khi di chuột */
+        /* NÂNG CẤP HIỆU ỨNG HOVER: Biến chữ thành dải màu hoàng hôn, bóng đổ 3D đậm chất Retro Pop */
         .char:hover {
-            transform: translateY(-15px);
-            /* Màu xanh dương sáng chuyển sang tông đậm hơn để dễ nhìn trên nền trắng */
-            color: #2563eb;
-            text-shadow: 0px 8px 0px #1d4ed8;
+            transform: translateY(-18px) scale(1.08);
+            /* Màu cam đào nổi bật trên nền trắng */
+            color: #ff5e62;
+            /* Đổ bóng đổ kép tạo hiệu ứng khối 3D đổ bóng tầng */
+            text-shadow: 
+                3px 3px 0px #ff9966,
+                6px 6px 0px rgba(0, 0, 0, 0.15);
         }
-
-        /* Loại bỏ cursor nhấp nháy theo yêu cầu */
 
         @media (max-width: 800px) {
             .char { 
@@ -68,7 +67,7 @@
 <body>
 
     <div class="container" id="text-target">
-        </div>
+    </div>
 
     <script>
         const text = "TRANG DỰ ÁN";
