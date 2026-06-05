@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Tổng Kết - Notion Tech Style</title>
+    <title>Trang Tổng Kết - Notion Pixel Style</title>
+    <!-- Nhúng font Pixel Silkscreen hỗ trợ Tiếng Việt chuẩn 100% không lỗi dấu -->
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,7 +18,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            /* Nền trắng xám nhẹ tối giản chuẩn Notion */
+            /* Giữ nền trắng tối giản sạch sẽ chuẩn Notion */
             background-color: #FAFAFA; 
             overflow: hidden;
         }
@@ -24,24 +26,25 @@
         .container {
             text-align: center;
             user-select: none;
+            width: 100%;
         }
 
-        /* Khung chứa chữ bồng bềnh tự động */
+        /* Khóa chữ trên một dòng duy nhất và tạo hiệu ứng bồng bềnh nhẹ */
         .title-wrapper {
             display: inline-block;
+            white-space: nowrap; 
             animation: float-slow 5s ease-in-out infinite;
         }
 
-        /* TẠO HIỆU ỨNG CHỮ PIXEL CÔNG NGHỆ KHÔNG LỖI DẤU */
+        /* ĐỊNH DẠNG FONT PIXEL CHUẨN - ĐỀU CHỮ - KHÔNG LO LỖI */
         .char {
             display: inline-block;
-            /* Sử dụng font chữ vuông góc cạnh hệ thống để chống lỗi dấu */
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 5.5rem;
-            font-weight: 900;
+            font-family: 'Silkscreen', monospace;
+            font-size: 6.5rem; /* Tối ưu lại kích thước theo font mới */
+            font-weight: 700;
             text-transform: uppercase;
             
-            /* Dải màu Gradient Công nghệ: Xanh Ngọc -> Xanh Lam -> Tím */
+            /* Dải màu Gradient Công nghệ chuyển động mượt mà */
             background: linear-gradient(135deg, #00D2FF, #0072FF, #7928CA, #00D2FF);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -49,27 +52,18 @@
             animation: gradient-move 4s ease infinite;
 
             cursor: pointer;
-            width: 0.75em;
+            width: 0.8em; /* Độ rộng hoàn hảo để các chữ pixel đứng cạnh nhau */
             text-align: center;
             
-            /* TẠO ĐỘ RĂNG CƯA PIXEL BẰNG CSS SHADOW */
-            text-shadow: 
-                2px 2px 0px rgba(0, 114, 255, 0.15),
-                4px 4px 0px rgba(0, 114, 255, 0.1);
-
-            /* Hiệu ứng chuyển động steps (giật theo nấc pixel) thay vì mượt kiểu modern */
+            /* Đổ bóng pixel nhẹ tinh tế phía sau */
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s steps(3), filter 0.2s ease;
         }
 
-        /* HIỆU ỨNG HOVER: Chữ nảy lên dạng khối 3D Pixel và phát sáng điện tử */
+        /* HIỆU ỨNG HOVER CÔNG NGHỆ: Chữ nảy cao và tỏa ánh sáng Neon */
         .char:hover {
-            transform: translateY(-20px);
-            /* Khi di chuột vào, bóng đổ pixel phía sau sẽ kéo dài và đậm nét hơn */
-            text-shadow: 
-                3px 3px 0px #00D2FF,
-                6px 6px 0px #0072FF,
-                9px 9px 0px rgba(121, 40, 202, 0.2);
-            filter: drop-shadow(0 10px 10px rgba(0, 210, 255, 0.3));
+            transform: translateY(-20px) scale(1.08);
+            filter: drop-shadow(0 15px 15px rgba(0, 210, 255, 0.5));
         }
 
         /* Khoảng cách giữa chữ TRANG - TỔNG - KẾT */
@@ -89,14 +83,22 @@
             50% { transform: translateY(-12px); }
         }
 
-        /* Co giãn trên điện thoại */
-        @media (max-width: 800px) {
-            .char { 
-                font-size: 2.5rem; 
-            }
-            .space {
-                width: 15px;
-            }
+        /* Tự động co giãn đều trên 1 dòng duy nhất cho mọi màn hình điện thoại */
+        @media (max-width: 1200px) {
+            .char { font-size: 5rem; }
+            .space { width: 25px; }
+        }
+        @media (max-width: 850px) {
+            .char { font-size: 3.5rem; }
+            .space { width: 15px; }
+        }
+        @media (max-width: 600px) {
+            .char { font-size: 2.2rem; }
+            .space { width: 10px; }
+        }
+        @media (max-width: 400px) {
+            .char { font-size: 1.6rem; }
+            .space { width: 6px; }
         }
     </style>
 </head>
@@ -104,6 +106,7 @@
 
     <div class="container">
         <div class="title-wrapper">
+            <!-- Từ: TRANG -->
             <span class="char">T</span>
             <span class="char">R</span>
             <span class="char">A</span>
@@ -112,6 +115,7 @@
             
             <div class="space"></div>
             
+            <!-- Từ: TỔNG (Gõ chữ có dấu bình thường, font tự xử lý cực chuẩn) -->
             <span class="char">T</span>
             <span class="char">Ổ</span>
             <span class="char">N</span>
@@ -119,6 +123,7 @@
             
             <div class="space"></div>
             
+            <!-- Từ: KẾT -->
             <span class="char">K</span>
             <span class="char">Ế</span>
             <span class="char">T</span>
