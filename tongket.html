@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Tổng Kết - Notion Tech Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Nền trắng xám nhẹ tối giản chuẩn Notion */
+            background-color: #FAFAFA; 
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            user-select: none;
+        }
+
+        /* Khung chứa chữ bồng bềnh tự động */
+        .title-wrapper {
+            display: inline-block;
+            animation: float-slow 5s ease-in-out infinite;
+        }
+
+        /* TẠO HIỆU ỨNG CHỮ PIXEL CÔNG NGHỆ KHÔNG LỖI DẤU */
+        .char {
+            display: inline-block;
+            /* Sử dụng font chữ vuông góc cạnh hệ thống để chống lỗi dấu */
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 5.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            
+            /* Dải màu Gradient Công nghệ: Xanh Ngọc -> Xanh Lam -> Tím */
+            background: linear-gradient(135deg, #00D2FF, #0072FF, #7928CA, #00D2FF);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-move 4s ease infinite;
+
+            cursor: pointer;
+            width: 0.75em;
+            text-align: center;
+            
+            /* TẠO ĐỘ RĂNG CƯA PIXEL BẰNG CSS SHADOW */
+            text-shadow: 
+                2px 2px 0px rgba(0, 114, 255, 0.15),
+                4px 4px 0px rgba(0, 114, 255, 0.1);
+
+            /* Hiệu ứng chuyển động steps (giật theo nấc pixel) thay vì mượt kiểu modern */
+            transition: transform 0.2s steps(3), filter 0.2s ease;
+        }
+
+        /* HIỆU ỨNG HOVER: Chữ nảy lên dạng khối 3D Pixel và phát sáng điện tử */
+        .char:hover {
+            transform: translateY(-20px);
+            /* Khi di chuột vào, bóng đổ pixel phía sau sẽ kéo dài và đậm nét hơn */
+            text-shadow: 
+                3px 3px 0px #00D2FF,
+                6px 6px 0px #0072FF,
+                9px 9px 0px rgba(121, 40, 202, 0.2);
+            filter: drop-shadow(0 10px 10px rgba(0, 210, 255, 0.3));
+        }
+
+        /* Khoảng cách giữa chữ TRANG - TỔNG - KẾT */
+        .space {
+            display: inline-block;
+            width: 35px;
+        }
+
+        @keyframes gradient-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Co giãn trên điện thoại */
+        @media (max-width: 800px) {
+            .char { 
+                font-size: 2.5rem; 
+            }
+            .space {
+                width: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title-wrapper">
+            <span class="char">T</span>
+            <span class="char">R</span>
+            <span class="char">A</span>
+            <span class="char">N</span>
+            <span class="char">G</span>
+            
+            <div class="space"></div>
+            
+            <span class="char">T</span>
+            <span class="char">Ổ</span>
+            <span class="char">N</span>
+            <span class="char">G</span>
+            
+            <div class="space"></div>
+            
+            <span class="char">K</span>
+            <span class="char">Ế</span>
+            <span class="char">T</span>
+        </div>
+    </div>
+
+</body>
+</html>
